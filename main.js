@@ -1,23 +1,20 @@
 let humanScore = 0;
 let computerScore = 0;
 
-playGame();
+document.getElementById('rock').addEventListener('click', function() {
+    playRound('rock', getComputerChoice());
+});
+document.getElementById('paper').addEventListener('click', function() {
+    playRound('paper', getComputerChoice());
+});
+document.getElementById('scissor').addEventListener('click', function() {
+    playRound('scissor', getComputerChoice());
+});
 
 function getComputerChoice() {
     const choices = ["rock", "paper", "scissor"];
     const choice = Math.floor(Math.random() * 3);
     return choices[choice];
-}
-
-function getHumanChoice() {
-    const message = "Please choose: Rock, Paper or Scissor.";
-    const choice = prompt(message).toLowerCase();
-    if(choice === "rock" || choice === "paper" || choice === "scissor"){
-        return choice;
-    } else {
-        alert("Wrong input! Please enter a valid input.");
-        return getHumanChoice();
-    }
 }
 
 function playRound(humanChoice, computerChoice) {
@@ -36,16 +33,4 @@ function playRound(humanChoice, computerChoice) {
         computerScore++;
     }
     console.log(`Score: Human ${humanScore} - ${computerScore} Computer`); 
-}
-
-function playGame(){
-    const computerChoice = getComputerChoice();
-    const humanChoice = getHumanChoice();
-    playRound(humanChoice, computerChoice);
-
- if(humanScore === 5){
-        console.log(`You win! Congrats :)\nFinal Score: Human ${humanScore} - ${computerScore} Computer`);
-    }else {
-        console.log(`You loose! Try next time harder ;)\nFinal Score: Human ${humanScore} - ${computerScore} Computer`);
-    }
 }
