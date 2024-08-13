@@ -1,6 +1,12 @@
 let humanScore = 0;
 let computerScore = 0;
 
+const resultsDiv = document.getElementById('results');
+
+function updateResults(message){
+    resultsDiv.textContent = message;
+}
+
 document.getElementById('rock').addEventListener('click', function() {
     playRound('rock', getComputerChoice());
 });
@@ -18,19 +24,22 @@ function getComputerChoice() {
 }
 
 function playRound(humanChoice, computerChoice) {
+    let resultMessage = '';
+
     if (humanChoice == computerChoice){
-        console.log(`Even! Both choose ${humanChoice}.`);
+        resultMessage = `Even! Both choose ${humanChoice}.`;
     }
     else if(
         (humanChoice === "rock" && computerChoice === "scissor") ||
         (humanChoice === "paper" && computerChoice === "rock") ||
         (humanChoice === "scissor" && computerChoice === "paper")
     ){
-        console.log(`You win! ${humanChoice} beats ${computerChoice}.`);
+        resultMessage = `You win! ${humanChoice} beats ${computerChoice}.`;
         humanScore++;
     } else{
-        console.log(`You loose! ${computerChoice} beats ${humanChoice}.`);
+        resultMessage = `You loose! ${computerChoice} beats ${humanChoice}.`;
         computerScore++;
     }
+    updateResults(resultMessage);
     console.log(`Score: Human ${humanScore} - ${computerScore} Computer`); 
 }
