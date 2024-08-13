@@ -1,10 +1,12 @@
 let humanScore = 0;
 let computerScore = 0;
 
-const resultsDiv = document.getElementById('results');
+const resultsDiv = document.getElementById('resultMessage');
+const results = document.getElementById('result');
 
-function updateResults(message){
+function updateResults(message, message2){
     resultsDiv.textContent = message;
+    results.textContent = message2;
 }
 
 document.getElementById('rock').addEventListener('click', function() {
@@ -40,6 +42,6 @@ function playRound(humanChoice, computerChoice) {
         resultMessage = `You loose! ${computerChoice} beats ${humanChoice}.`;
         computerScore++;
     }
-    updateResults(resultMessage);
-    console.log(`Score: Human ${humanScore} - ${computerScore} Computer`); 
+    resultMessage += `Score: Human ${humanScore} - ${computerScore} Computer`; 
+    updateResults(resultMessage, `Score: Human ${humanScore} - ${computerScore} Computer`);
 }
