@@ -5,8 +5,23 @@ const resultsDiv = document.getElementById('resultMessage');
 const results = document.getElementById('result');
 
 function updateResults(message, message2){
+
     resultsDiv.textContent = message;
     results.textContent = message2;
+
+    if (humanScore >= 5){
+        resultsDiv.textContent = "You Win! Congratulations.";
+        disableButtons();
+    } else if(computerScore >= 5){
+        resultsDiv.textContent = "You loose! Try harder.";
+        disableButtons();
+    }
+}
+
+function disableButtons() {
+    document.getElementById('rock').disabled = true;
+    document.getElementById('paper').disabled = true;
+    document.getElementById('scissor').disabled = true;
 }
 
 document.getElementById('rock').addEventListener('click', function() {
@@ -42,6 +57,5 @@ function playRound(humanChoice, computerChoice) {
         resultMessage = `You loose! ${computerChoice} beats ${humanChoice}.`;
         computerScore++;
     }
-    resultMessage += `Score: Human ${humanScore} - ${computerScore} Computer`; 
     updateResults(resultMessage, `Score: Human ${humanScore} - ${computerScore} Computer`);
 }
