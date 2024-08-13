@@ -43,9 +43,7 @@ function playGame(){
     const humanChoice = getHumanChoice();
     playRound(humanChoice, computerChoice);
 
-    if (humanScore < 5 && computerScore < 5){
-        playGame();
-    }else if(humanScore === 5){
+ if(humanScore === 5){
         console.log(`You win! Congrats :)\nFinal Score: Human ${humanScore} - ${computerScore} Computer`);
     }else {
         console.log(`You loose! Try next time harder ;)\nFinal Score: Human ${humanScore} - ${computerScore} Computer`);
